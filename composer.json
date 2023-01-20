@@ -1,0 +1,21 @@
+{
+    "name": "alireza/todo-list",
+    "description": "Todo List Project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Alireza\\TodoList\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pcalireza10up",
+            "email": "toolsalireza@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.1",
+        "twbs/bootstrap": "5.1.3"
+    }
+}
