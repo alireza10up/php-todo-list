@@ -13,4 +13,5 @@ if (isset($_GET['deleteFolderId']) && is_numeric($_GET['deleteFolderId'])) {
 // get data
 $folders = getFolders();
 // view
-include 'tpl/tpl-index.php';
+include BASE_PATH . 'tpls/tpl-index.php';
+?>

@@ -1,10 +1,10 @@
 <?php
 
 // inc
-include 'vendor/autoload.php';
-include 'bootstrap/config.php';
-include 'bootstrap/constants.php';
-include 'libs/lib-helpers.php';
+include 'constants.php';
+include BASE_PATH . 'vendor/autoload.php';
+include BASE_PATH . 'bootstrap/config.php';
+include BASE_PATH . 'libs/helpers.php';
 
 // con db
 $dsn = "mysql:dbname=$dbConfig->db;host={$dbConfig->host}";
@@ -16,7 +16,5 @@ try {
 }
 
 // data
-include 'libs/lib-auth.php';
-include 'libs/lib-tasks.php';
-
-?>
+include BASE_PATH . 'libs/lib-auth.php';
+include BASE_PATH . 'libs/lib-tasks.php';
