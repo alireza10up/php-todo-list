@@ -50,6 +50,7 @@ section.section-menu-navigation svg {
     section.section-menu {
         display: none;
         position: fixed;
+        z-index: 2;
     }
 
     section.section-content {
@@ -73,6 +74,7 @@ section.section-menu-navigation svg {
         background-color: rgba(0, 0, 0, 0.500);
         width: 150%;
         height: 150%;
+        z-index: 2;
     }
 
 }
