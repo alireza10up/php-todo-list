@@ -3,8 +3,6 @@
 // security check
 defined("BASE_PATH") or die('PERMISSION_DENIAL');
 
-use Illuminate\Contracts\Pagination\Paginator;
-
 // func folders
 
 function addFolder($folderName)
@@ -48,8 +46,9 @@ function deleteFolder(int $id = null)
 function countItemInFolder(int $id = null)
 {
     global $pdo;
-    $statment =  (is_null($id)) ? '' : 'where `folder_id` =' . $id;
-    $sql = 'select count(id) as total from `tasks`' . $statment;
+    $currentUserId = getCurrentUserId();
+    $statment =  (is_null($id)) ? '' : 'and `folder_id` =' . $id;
+    $sql = "select count(id) as total from `tasks` where `user_id` = {$currentUserId} {$statment} ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $record = $stmt->fetchAll(PDO::FETCH_OBJ);

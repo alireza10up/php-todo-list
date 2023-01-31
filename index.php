@@ -2,8 +2,9 @@
 
 // init 
 include 'bootstrap/init.php';
-// date pakage
-use Hekmatinasser\Verta\Verta;
+
+// check login
+if(!isLoggedIn()) redirectTool('auth.php');
 
 // request handeling
 if (isset($_GET['deleteFolderId']) && is_numeric($_GET['deleteFolderId'])) {

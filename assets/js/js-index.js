@@ -89,6 +89,11 @@ $('document').ready(function () {
         $('#menuCover').fadeOut();
     });
 
+    // clear input task
+    $('#clearBtn').click((e) => {
+        $('#addTaskInput').val('');
+    });
+
     // delete handel
     $('.deleteItem').on('click', function (e) {
         // get folder id for back to on folder

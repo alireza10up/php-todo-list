@@ -38,9 +38,9 @@
                 </div>
                 <button class="btn btn-dark col-2" id="newFolderBtn">+</button>
             </ul>
-            <ul class="folder_list list-group mb-3">
+            <ul class="folder_list rounded-3 list-group mb-3">
                 <a href="<?= BASE_URL ?>">
-                    <li class="<?= /* active all */ (!isset($_GET['folderId'])) ? "active" : "list-group-item-action" ?> list-group-item d-flex justify-content-between align-items-center">
+                    <li class="<?= /* active all */ (!isset($_GET['folderId'])) ? "active" : " rounded-top list-group-item-action" ?> list-group-item d-flex justify-content-between align-items-center">
                         All
                         <span class="badge bg-dark rounded-pill"><?= countItemInFolder()[0]->total ?></span>
                     </li>
@@ -78,23 +78,22 @@
             </ul>
         </section>
         <section class="section-content bg-body rounded m-2 p-2">
-            <h4 class="m-1 alert-primary p-2 rounded-3 d-flex align-items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" style='fill:#084298' class="bi bi-check2-square" viewBox="0 0 16 16">
-                    <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
-                    <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
-                </svg>
-                <?= SITE_TITLE ?> <br>
-            </h4>
-            <h6 class="m-1 p-1 alert-danger rounded-3 align-items-center ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:#842029" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
-                    <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
-                </svg>
-                Date Shamsi : <?= verta()->format('%B ,%d %Y') ?> <br>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="fill:#842029" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
-                    <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
-                </svg>
-                Date Milady : <?= date('Y d, M') ?>
-            </h6>
+            <div class="container d-flex flex-wrap">
+                <h4 class="m-1 alert-primary p-2 rounded-3 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" style='fill:#084298' class="bi bi-check2-square" viewBox="0 0 16 16">
+                        <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                        <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                    </svg>
+                    <?= SITE_TITLE ?> <br>
+                </h4>
+                <h4 class="m-1 alert-danger p-2 rounded-3 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="fill:#842029" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+                        <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                    <?= date('Y d, M') ?>
+                </h4>
+            </div>
+
             <!-- add todo -->
             <article class="container d-flex flex-column gap-3 mt-3 mb-3">
                 <div class="input-group">
@@ -107,11 +106,11 @@
                             </svg>
                         </span>
                     </div>
-                    <input type="text" id="addTaskInput" class="form-control input-add-todo" placeholder="Write You Task OR Todo">
+                    <input type="text" id="addTaskInput" class="form-control input-add-todo" placeholder="Write Youre Task ...">
                 </div>
                 <div class="d-flex gap-2">
                     <button id="addTaskBtn" class="btn btn-dark ">Submit</button>
-                    <input type="reset" class="btn btn-danger " value="Clear">
+                    <input type="reset" id="clearBtn" class="btn btn-danger" value="Clear">
                 </div>
             </article>
             <!-- list todo -->
@@ -120,17 +119,21 @@
                     <?php $i = 1; ?>
                     <?php foreach ($tasks as $task) : ?>
                         <!-- todo 1 -->
-                        <div class="flex-wrap rounded-3 <?= /* checked ? */ $task->is_done ? 'bg-success' : 'bg-primary'; ?> bg-gradient d-flex justify-content-between p-2 mb-3">
-                            <div class="d-flex gap-3">
+                        <div class="flex-wrap rounded-3 gap-3 <?= /* checked ? */ $task->is_done ? 'bg-success' : 'bg-primary'; ?> bg-gradient d-flex justify-content-between p-2 mb-3">
+                            <div class="d-flex gap-2 rounded-3 p-2 alert-primary align-items-center">
                                 <input type="checkbox" <?= /* checked */ $task->is_done ? 'checked' : '' ?> id="todo<?= $i ?>" class="taskItem form-check-input" value="<?= /* task id */ $task->id ?>">
                                 <label for="todo<?= $i ?>" class="form-check-label"><?= /* title */ $task->title ?></label>
                             </div>
-                            <div class="d-flex gap-3">
-                                <span>
-                                    Create At : <?= /* create at */ $task->create_at ?>
+                            <div class="d-flex gap-3 ">
+                                <span class="alert-info p-2 rounded-3 d-flex align-items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style='fill:#055160;' class="bi bi-calendar-plus" viewBox="0 0 16 16">
+                                        <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                    </svg>
+                                    <?= /* create at */ $task->create_at ?>
                                 </span>
                                 <a href="?deleteTaskId=<?= $task->id ?>" class="deleteItem d-flex align-self-center bg-danger rounded p-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                     </svg>
                                 </a>

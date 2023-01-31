@@ -8,6 +8,13 @@ function createUrl(string $path = null)
     return BASE_URL . $path;
 }
 
+function redirectTool(string $location = BASE_URL)
+{
+    if (!headers_sent()) header("location:{$location}");
+    else echo "<script>location.href = '{$location}'</script>";
+    die();
+}
+
 function isAjaxRequest()
 {
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') return true;

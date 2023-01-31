@@ -1,7 +1,13 @@
+@font-face {
+    font-family: en;
+    src: url(../fonts/ARLRDBD.TTF);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: en;
 }
 
 /* global tag  */
