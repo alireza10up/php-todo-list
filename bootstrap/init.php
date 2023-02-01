@@ -1,5 +1,8 @@
 <?php
 
+// time zone
+date_default_timezone_set('Asia/Tehran');
+
 // inc
 include 'constants.php';
 include BASE_PATH . 'bootstrap/config.php';

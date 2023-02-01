@@ -8,12 +8,22 @@ defined("BASE_PATH") or die('PERMISSION_DENIAL');
 
 function getCurrentUserId()
 {
-    return 1;
+    return $_COOKIE['userId'] ?? 0;
+}
+
+function getUserByEmail(string $email = null)
+{
+    global $pdo;
+    $sql = 'select * from `users` where email = :email';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':email' => $email]);
+    $record = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $record[0];
 }
 
 function isLoggedIn()
 {
-    return true;
+    return isset($_COOKIE['login']);
 }
 
 function register(array $args = null)
@@ -40,7 +50,7 @@ function register(array $args = null)
     $sql = 'select * from `users` where email = :email';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':email' => $email]);
-    if($stmt->rowCount()) return EMAIL_EXISTS;
+    if ($stmt->rowCount()) return EMAIL_EXISTS;
     // insert in db
     $sql = 'insert into `users` (name ,  password , email) values (:name , :pass , :email )';
     $stmt = $pdo->prepare($sql);
@@ -50,4 +60,23 @@ function register(array $args = null)
 
 function login(array $args = null)
 {
+    // get data
+    $password = htmlspecialchars($args['password'] ?? 0);
+    $email = htmlspecialchars($args['email'] ?? 0);
+    // validation //
+    // check length
+    if (strlen($password) > 32 || strlen($password) < 8) return INVALID_LENGTH_PASSWORD;
+    // check password
+    if (!preg_match('/^[A-Za-z][A-Za-z0-9]{4,31}$/', $password)) return REGEX_NOT_MATCH_PASSWORD;
+    // check email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return INVALID_EMAIL;
+    $user = getUserByEmail($email);
+    if (!$user) return USER_NOT_FOUND;
+    // verify password
+    if (!password_verify($password, $user->password)) return INFORMATION_INCORRECT;
+    // set cookie
+    setcookie('login', $user->name, time() + 86400, '/');
+    setcookie('userId', $user->id, time() + 86400, '/');
+    // back home
+    redirectTool();
 }

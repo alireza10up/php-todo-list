@@ -17,3 +17,5 @@ const REGEX_NOT_MATCH_USERNAME = 'Name must contain numbers and Latin characters
 const REGEX_NOT_MATCH_PASSWORD = 'Password must contain numbers and Latin characters';
 const INVALID_LENGTH_NAME = 'The name must be between 1 and 32 characters';
 const INVALID_LENGTH_PASSWORD = 'The password must be between 8 and 32 characters';
+const USER_NOT_FOUND = 'user not found';
+const INFORMATION_INCORRECT = 'The information is incorrect';

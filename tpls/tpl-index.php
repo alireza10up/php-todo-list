@@ -24,7 +24,7 @@
         <section class="section-menu bg-body text-center rounded m-2 p-2">
             <!-- profile -->
             <img src=" <?= createUrl('assets/img/non-profile.png') ?>" class="img-thumbnail rounded mb-3 " alt="profile">
-            <h6 class="text-info mb-3">Alireza10up</h6>
+            <h6 class="text-info mb-3">Welcome <?= $_COOKIE['login'] ?></h6>
             <!-- folders -->
             <h5 class="text-white bg-primary d-flex gap-1 align-items-center rounded-3 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -90,7 +90,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="fill:#842029" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
                         <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
                     </svg>
-                    <?= date('Y d, M') ?>
+                    <?= date('Y - m - d') ?>
                 </h4>
             </div>
 
