@@ -3,6 +3,9 @@
 // init 
 include 'bootstrap/init.php';
 
+// logout
+if(isset($_GET['logout'])) logout();
+
 // check login
 if(!isLoggedIn()) redirectTool('auth.php');
 

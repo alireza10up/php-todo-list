@@ -23,8 +23,8 @@
         <div id="menuCover"></div>
         <section class="section-menu bg-body text-center rounded m-2 p-2">
             <!-- profile -->
-            <img src=" <?= createUrl('assets/img/non-profile.png') ?>" class="img-thumbnail rounded mb-3 " alt="profile">
-            <h6 class="text-info mb-3">Welcome <?= $_COOKIE['login'] ?></h6>
+            <img src=" <?= "https://www.gravatar.com/avatar/" . md5( strtolower( trim( getUserById($_COOKIE['login'])->email ) ) ) ?>" class="img-thumbnail rounded mb-3 " alt="profile">
+            <h6 class="text-info mb-3">Welcome <?= getUserById($_COOKIE['login'])->name ?></h6>
             <!-- folders -->
             <h5 class="text-white bg-primary d-flex gap-1 align-items-center rounded-3 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@
                 <button class="list-group-item d-flex justify-content-between align-items-center">
                     Setting
                 </button>
-                <button class="list-group-item d-flex justify-content-between align-items-center bg-danger text-white">
+                <button onclick="location.href='?logout=1'" class="list-group-item d-flex justify-content-between align-items-center bg-danger text-white">
                     Exit
                 </button>
             </ul>

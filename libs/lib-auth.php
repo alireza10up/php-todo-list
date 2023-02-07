@@ -8,7 +8,7 @@ defined("BASE_PATH") or die('PERMISSION_DENIAL');
 
 function getCurrentUserId()
 {
-    return $_COOKIE['userId'] ?? 0;
+    return getUserById($_COOKIE['login'])->id ?? 0;
 }
 
 function getUserByEmail(string $email = null)
@@ -18,7 +18,16 @@ function getUserByEmail(string $email = null)
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':email' => $email]);
     $record = $stmt->fetchAll(PDO::FETCH_OBJ);
-    return $record[0];
+    return $record[0] ?? null;
+}
+
+function getUserById(int $id = null) {
+    global $pdo;
+    $sql = 'select * from `users` where id = :id';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    $record = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $record[0] ?? null;
 }
 
 function isLoggedIn()
@@ -36,8 +45,6 @@ function register(array $args = null)
     // check length
     if (strlen($name) > 32 || strlen($name) < 2) return INVALID_LENGTH_NAME;
     if (strlen($password) > 32 || strlen($password) < 8) return INVALID_LENGTH_PASSWORD;
-    // check name
-    if (!preg_match('/^[A-Za-z][A-Za-z0-9]{4,31}$/', $name)) return REGEX_NOT_MATCH_USERNAME;
     // check password
     if (!preg_match('/^[A-Za-z][A-Za-z0-9]{4,31}$/', $password)) return REGEX_NOT_MATCH_PASSWORD;
     // check email
@@ -75,8 +82,13 @@ function login(array $args = null)
     // verify password
     if (!password_verify($password, $user->password)) return INFORMATION_INCORRECT;
     // set cookie
-    setcookie('login', $user->name, time() + 86400, '/');
-    setcookie('userId', $user->id, time() + 86400, '/');
+    setcookie('login', $user->id, time() + 86400, '/');
     // back home
+    redirectTool();
+}
+
+function logout() {
+    // unset cookie
+    setcookie('login', '', time() - 106400, '/');
     redirectTool();
 }
