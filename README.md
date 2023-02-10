@@ -2,6 +2,6 @@
 
 setup & enjoy
 
-todo list for love everything :)
+Work list for work lovers :)
 
 ## Good luck :)
