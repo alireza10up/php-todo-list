@@ -8,7 +8,7 @@ defined("BASE_PATH") or die('PERMISSION_DENIAL');
 
 function getCurrentUserId()
 {
-    return getUserById($_COOKIE['login'])->id ?? 0;
+    return getUserById($_SESSION['login'])->id ?? 0;
 }
 
 function getUserByEmail(string $email = null)
@@ -32,7 +32,7 @@ function getUserById(int $id = null) {
 
 function isLoggedIn()
 {
-    return isset($_COOKIE['login']);
+    return isset($_SESSION['login']);
 }
 
 function register(array $args = null)
@@ -82,13 +82,15 @@ function login(array $args = null)
     // verify password
     if (!password_verify($password, $user->password)) return INFORMATION_INCORRECT;
     // set cookie
-    setcookie('login', $user->id, time() + 86400, '/');
+    // setcookie('login', $user->id, time() + 86400, '/');
+    $_SESSION['login'] = $user->id;
     // back home
     redirectTool();
 }
 
 function logout() {
     // unset cookie
-    setcookie('login', '', time() - 106400, '/');
+    // setcookie('login', '', time() - 106400, '/');
+    session_destroy();
     redirectTool();
 }

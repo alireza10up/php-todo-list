@@ -23,8 +23,8 @@
         <div id="menuCover"></div>
         <section class="section-menu bg-body text-center rounded m-2 p-2">
             <!-- profile -->
-            <img src=" <?= "https://www.gravatar.com/avatar/" . md5( strtolower( trim( getUserById($_COOKIE['login'])->email ) ) ) ?>" class="img-thumbnail rounded mb-3 " alt="profile">
-            <h6 class="text-info mb-3">Welcome <?= getUserById($_COOKIE['login'])->name ?></h6>
+            <img src=" <?= "https://www.gravatar.com/avatar/" . md5( strtolower( trim( getUserById($_SESSION['login'])->email ) ) ) ?>" class="img-thumbnail rounded mb-3 " alt="profile">
+            <h6 class="text-info mb-3">Welcome <?= getUserById($_SESSION['login'])->name ?></h6>
             <!-- folders -->
             <h5 class="text-white bg-primary d-flex gap-1 align-items-center rounded-3 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
